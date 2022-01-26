@@ -1,6 +1,4 @@
 #https://atcoder.jp/contests/dp/tasks/dp_a
-## A
-
 n = gets.to_i
 h = gets.split(" ").map(&:to_i)
 dp = Array.new(n)

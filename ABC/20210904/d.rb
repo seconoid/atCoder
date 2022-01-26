@@ -1,34 +1,3 @@
-## A
-# s, t = gets.split(' ')
-# puts [s, t] == [s, t].sort ? 'Yes' : 'No'
-
-## B
-# STRS = %w(ABC ARC AGC AHC)
-# input_s = []
-
-# 3.times do
-#   input_s << gets.chomp
-# end
-
-# STRS.each do |str|
-#   unless input_s.include?(str)
-#     puts str
-#     return
-#   end
-# end
-
-## C
-# n = gets.to_i
-# array_p = gets.split(' ').map(&:to_i)
-# array_q = Array.new(n)
-
-# array_p.each_with_index do |p, i|
-#   array_q[p - 1] = i + 1
-# end
-
-# puts array_q.join(' ')
-
-## D
 l, q = gets.split(' ').map(&:to_i)
 querys = []
 q.times do
