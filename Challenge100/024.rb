@@ -1,6 +1,10 @@
 # https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_11_B&lang=ja
 
 def resolve(n, list)
+  if n == 1
+    puts [1, 2].join(" ")
+  end
+
   timestamps = {}
 
   (1..n).each do |i|
@@ -26,7 +30,7 @@ def dfs(v, list)
   @timestamps[v] ||= []
   @timestamps[v] << @count
 
-  nexts = list[v - 1][2..]
+  nexts = list[v - 1][2..-1]
   nexts.each do |next_v|
     if @timestamps.has_key?(next_v)
       next
