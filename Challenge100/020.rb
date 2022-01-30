@@ -5,32 +5,44 @@ def resolve
   b_list = gets.split.map(&:to_i)
   c_list = gets.split.map(&:to_i)
 
-  a_list.sort!
-  b_list.sort!
-  c_list.sort!
-
   count_makeable_altars(a_list, b_list, c_list)
 end
 
 def count_makeable_altars(top_parts, middle_parts, bottom_parts)
+  top_parts.sort!
+  bottom_parts.sort!
+
   count = 0
-  top_parts.each do |top_part|
-    middle_bigger_index = search_bigger_index(top_part, middle_parts)
-    break if middle_bigger_index.nil?
+  middle_parts.each do |middle_part|
+    lower_index_at_top = search_lower_index(middle_part, top_parts)
+    next if lower_index_at_top.nil?
 
-    middle_parts[middle_bigger_index..].each do |middle_part|
-      bottom_bigger_index = search_bigger_index(middle_part, bottom_parts)
-      break if bottom_bigger_index.nil?
+    upper_index_at_bottom = search_upper_index(middle_part, bottom_parts)
+    next if upper_index_at_bottom.nil?
 
-      count += bottom_parts.size - bottom_bigger_index
-    end
+    top_parts_count = lower_index_at_top + 1
+    bottom_parts_count = bottom_parts.size - upper_index_at_bottom
+
+    count += top_parts_count * bottom_parts_count
   end
 
   count
 end
 
-def search_bigger_index(num, nums)
+def search_upper_index(num, nums)
   nums.bsearch_index { |x| x > num }
+end
+
+def search_lower_index(num, nums)
+  tmp_index = nums.bsearch_index { |x| x >= num }
+
+  if tmp_index.nil?
+    nums.size - 1
+  elsif tmp_index == 0
+    nil
+  else
+    tmp_index - 1
+  end
 end
 
 puts resolve
