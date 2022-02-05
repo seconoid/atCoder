@@ -39,7 +39,17 @@ def center(shrink, diagonal_shrink)
   [(shrink_x + diagonal_shrink_x) / 2.0, (shrink_y + diagonal_shrink_y) / 2.0]
 end
 
-puts center([0, 0], [1, 1])
+def other_shrinks(shrink, diagonal_shrink)
+  center = center(shrink, diagonal_shrink)
+
+  x_length = (shrink[1] - center[1]).abs
+  y_length = (shrink[0] - center[0]).abs
+
+  [
+    [center[0] + x_length, center[1] - y_length],
+    [center[0] - x_length, center[1] + y_length]
+  ]
+end
 
 n = 10
 x_y_list = [
