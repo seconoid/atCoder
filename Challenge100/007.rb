@@ -25,14 +25,21 @@ def find_temple(n, shrinks)
   end
 end
 
-# 対角の2点をもとに、正方形になるような他の点があるか判定する
+# 対角の2点をもとに、正方形にgなるような他の点があるか判定する
 def find_square?(shrink, diagonal_shrink, shrinks)
+  center = center(shrink, diagonal_shrink)
+end
+
+def center(shrink, diagonal_shrink)
   shrink_x = shrink[0]
   shrink_y = shrink[1]
   diagonal_shrink_x = diagonal_shrink[0]
   diagonal_shrink_y = diagonal_shrink[1]
+
+  [(shrink_x + diagonal_shrink_x) / 2.0, (shrink_y + diagonal_shrink_y) / 2.0]
 end
 
+puts center([0, 0], [1, 1])
 
 n = 10
 x_y_list = [
@@ -49,4 +56,4 @@ x_y_list = [
 ]
 ac = 10
 
-puts find_temple(n, x_y_list) == ac ? 'AC' : 'WA'
+# puts find_temple(n, x_y_list) == ac ? 'AC' : 'WA'
