@@ -72,19 +72,4 @@ def squareble_shrinks(shrink, diagonal_shrink)
   ]
 end
 
-n = 10
-x_y_list = [
-  [9, 4],
-  [4, 3],
-  [1, 1],
-  [4, 2],
-  [2, 4],
-  [5, 8],
-  [4, 0],
-  [5, 3],
-  [0, 5],
-  [5, 2]
-]
-ac = 10
-
-p find_max_temple(n, x_y_list) == ac ? 'AC' : 'WA'
+resolve
